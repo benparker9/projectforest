@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Project Forest: Tanzania</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CMM.css">
+    <nav class="nav">
+      <img src="logo.PNG" style="object-position: right right;">
+      <a href="../index.html">Home</a><br>
+      <a href="Project%20Activities.html">Project Activities</a><br>
+      <a href="Carbon Models%20and%20Methodology.html">Carbon Models and Methodology</a><br>
+      <a href="Project%20Area%20Maps.html">Project Area Maps</a><br>
+    </nav>
+   </head>
+<body>
+<div class="container">
+  <div class="content1">
+    <h1 class="h-1">Current Ex-Ante Estimations of GHG Removals</h1>
+    <p1 class="p-1">To aid collaboration and repeatability, RRG has posted the current model projections for FRP. <br>
+      Click below to download the package of non-linear regression models for planted species including statistical results, DBH predictions and graphs.</p1>
+    <p1 class="vmzip">
+      <a href="../spread/VM0047.zip" download>
+        <button class="zip">Current Model Results</button>      
+      </a> 
+    </p1>
+  </div>
+  <div class="content2">
+    <h1 class="h-2">Recreating Models</h1>
+    <p1 class="p-2">
+      To recreate the models, follow the next steps in order. <br>
+      1. Download these files <br><br>
+    </p1>
+    <p1 class="p-4">
+      <a href="../spread/YIELD.csv" download>
+        <button class="inventory">Inventory Data</button>
+      </a>
+    </p1>
+    <p1 class="p-5">
+      <a href="../spread/NLS_Loop.R" target="_blank" download>
+        <button class="model">Model Engine</button>
+      </a>
+    </p1> 
+    <p1 class="p-3">
+      3. Create a new folder for model inputs and exports. Move inventory data into inputs folder. Be sure to update<br>
+       the file path at the beginning and end of script.<br>
+      4. Open RStudio, import script. <br>
+      5. Run script. Model will produce statistical results, predictions and graphs for each species.<br>
+      6. Assess each species' prediction model. Justification for each model chosen can be found in the package<br> for current FRP models.
+       Curves were chosen based on conservative estimates, R2 values and early life predictions.<br>
+      7. Click below for the current model methodology, explanation of current assumptions and data limitations.      
+    </p1>
+    <p1 class="nls">
+      <a href="vm0047.html" target="_blank">
+        <button class="method">Methodology</button>
+      </a>
+    </p1>
+  </div>
+
+  <div class="image1">
+    <img src="../imgs_PF/graph1.jpg" alt="HTML5" style="width:700px;height:400px" class="img1">
+  </div> 
+  <div class="image2">
+    <img src="../imgs_PF/routlines.png" alt="HTML5" style="width:730px;height:500px" class="imgR">
+  </div>
+  <div class="footer">
+    <footer>
+      <p1>This website is maintained by <a href="https://www.reducereusegrow.org/"
+        target="_blank">Reduce. Reuse. Grow. Inc. </a>
+        <a href="https://cdn.prod.website-files.com/5f21be7ca433fe7024209d52/64eedaa7b10c5c92be3ecc94_Terms%20and%20Conditions.pdf"
+        target="_blank">Copyright © 2025 Reduce Reuse Grow — All rights reserved.</a>
+        </p1>
+    </footer>
+  </div>
+</div>
+<body> 
+</html>
