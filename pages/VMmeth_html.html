@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Project Forest: Tanzania</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vm.css">
+    <nav class="nav">
+      <img src="logo.PNG" style="object-position: right right;">
+      <a href="../index.html">Home</a><br>
+      <a href="Project%20Activities.html">Project Activities</a><br>
+      <a href="Carbon Models%20and%20Methodology.html">Carbon Models and Methodology</a><br>
+      <a href="Project%20Area%20Maps.html">Project Area Maps</a><br>
+    </nav>
+   </head>
+   <body>
+    <div class="container">
+        <div class="content1">
+            <h1 class="title">Introduction</h1>
+            <p1 class="intro">Reduce. Reuse. Grow has partnered with the Philippine Eagle Foundation and the Friends of the Usambara to plant over 9 million trees. RRG created a database with pertinent 
+                information on each species planted, including relevant cultural significance, practical use, life cycle modeling, 
+                and estimated carbon sequestration.
+            </p1>
+            <h1 class="method">Methodology</h1>
+            <p1 class="methcont">
+              Per section 8.6 of the VM 0047 methodology, the change in woody biomass is calculated from ex ante estimates of modelled growth and 
+              yield values. RRG conducted a literature review and forest inventory to gather data on species’ DBH at an assortment of ages. RRG then 
+              created a regression “engine” using the statistical programming language, R, to calculate values outside of the inventory. This engine 
+              serves as a program to run many species’ models at once. It takes inputs (Age vs. DBH) and produces graphs, prediction curves and 
+              statistical results. RRG utilized the port algorithm within the nls() function to solve for constants (a,b,c below). This algorithm 
+              solves for residuals, or the difference between observed and predicted values. Models failed to converge, or solve, if the port algorithms
+               first guess did not reduce the residuals. This is because some of the mathematical equations, primarily the Chapman Richard’s, did not 
+               always represent the inventory data (sigmoid shape). In this case, the model would fail to converge and would crash the program. To 
+               account for this, RRG utilized the tryCatch function within R to complete the program despite the model failing. When failures occurred, 
+               the program would print the results from the previous success. This resulted in some species’ graphs showing inaccurate projections. 
+               However, when selecting models, it is easy for users to not select those model predictions. The methodology and program code for the 
+               engine is attached to the FRP website. Below are the five equations used and their initial parameter guesses:<br>
+               1. 2nd Order Polynomial<br>
+               f(x)=x^2 + x + b<br>
+               Where f(x) = DBH (cm)<br>
+               x= Age (years)<br>
+               b = constant (did not need an initial estimate with the lm function)<br>
+               2. 3rd Order Polynomial<br>
+               f(x)=x^3 + x^2 + x + b<br>
+               Where f(x) = DBH (cm)<br>
+               x= Age (years)<br>
+               b = constant (did not need an initial estimate with the lm function)<br>
+               3. Logarithmic<br>
+               f(x)=a + b * log(x)<br>
+               Where f(x) = DBH (cm)<br>
+               a= 0.5<br>
+               b = 10<br>
+               4. Power<br>
+               f(x)= b * x ^ a <br>
+               Where f(x) = DBH (cm)<br>
+               a= 0.5<br>
+               b = 10<br>
+               5. Chapman Richard's<br>
+               f(x)=a * (1-exp(-k * t))^b <br>
+               Where f(x) = DBH (cm)<br>
+               a= max(DBH)<br>
+               k=0.3<br>
+               b = 1 (can be 0-2.5)<br>
+            </p1>
+        </div>
+        <div class="footer">
+            <footer>
+              <p1>This website is maintained by <a href="https://www.reducereusegrow.org/"
+                target="_blank">Reduce. Reuse. Grow. Inc. </a>
+                <a href="https://cdn.prod.website-files.com/5f21be7ca433fe7024209d52/64eedaa7b10c5c92be3ecc94_Terms%20and%20Conditions.pdf"
+                target="_blank">Copyright © 2025 Reduce Reuse Grow — All rights reserved.</a>
+                </p1>
+            </footer>
+        </div>
+    </div>
+    </body> 
+</html>
